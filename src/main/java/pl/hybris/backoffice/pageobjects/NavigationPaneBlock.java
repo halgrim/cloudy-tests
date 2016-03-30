@@ -1,13 +1,11 @@
 package pl.hybris.backoffice.pageobjects;
 
 
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import pl.hybris.backoffice.or.NavigationPaneOR;
+import pl.hybris.backoffice.or.NavigationPaneORAccordionMenuElements;
+import pl.hybris.core.threading.CurrentThreadDriver;
 import pl.hybris.core.interfaces.BasicPageBlock;
-import pl.hybris.core.interfaces.Locator;
 
 import java.util.ArrayList;
 
@@ -15,69 +13,52 @@ import java.util.ArrayList;
 /**
  * Created by i323728 on 03.03.2016.
  */
-@RequiredArgsConstructor
 public class NavigationPaneBlock implements BasicPageBlock
 {
 
 	ArrayList<WebElement> breadcrumbsElements = new ArrayList<>();
+	private NavigationPaneOR or;
 
-	@NonNull private WebDriver driver;
-    private boolean initialized = false;
-	By pageByTag = By.cssSelector("[ytestid=\"explorerTree\"]");
+	public NavigationPaneBlock(){}
 
-	By elementIndicatingIfAccordionElementIsExpanded = By.cssSelector("td > div > span > i");
+	private boolean initialized = false;
 
-
-	private void hasToBeInitialized()
-	{
-        if (!initialized)
-        {
-            WebElement pageTag = driver.findElement(pageByTag);
-            breadcrumbsElements.add(pageTag);
-            initialized = true;
-        }
-
-	}
 
 	@Override
 	public NavigationPaneBlock synchronize()
 	{
-        hasToBeInitialized();
+		if (!initialized)
+		{
+			or = new NavigationPaneOR(breadcrumbsElements, CurrentThreadDriver.getCurrentDriver());
+			initialized = true;
+		}
 		return this;
 
 	}
 
-    private WebElement getElementOnThisPage(By by)
-    {
-        return breadcrumbsElements.get(breadcrumbsElements.size() - 1).findElement(by);
-    }
-
-	public NavigationPaneBlock expandMenuElement(Locator by)
+	public NavigationPaneBlock expandMenuElement(NavigationPaneORAccordionMenuElements menuElement)
 	{
-		WebElement menuWebElement = getElementOnThisPage(by.getLocator());
 
-		if (checkIfMenuElementIsExpanded(menuWebElement))
+		if (checkIfMenuElementIsExpanded(menuElement))
 		{
 			return this;
 		} else
 		{
-			menuWebElement.click();
+			clickAccordionMenuElement(menuElement);
 			return this;
 		}
 	}
 
-	public NavigationPaneBlock clickAccordionMenuElement(Locator by)
+	public NavigationPaneBlock clickAccordionMenuElement(NavigationPaneORAccordionMenuElements menuElement)
 	{
-        getElementOnThisPage(by.getLocator()).click();
+		or.accordionMenu(menuElement).click();
 		return this;
 	}
 
 
-	private boolean checkIfMenuElementIsExpanded(WebElement menuWebElement)
+	private boolean checkIfMenuElementIsExpanded(NavigationPaneORAccordionMenuElements menuElement)
 	{
-		WebElement webElementIndicatingIfAccordionElementIsExpanded = menuWebElement.findElement(elementIndicatingIfAccordionElementIsExpanded);
-		String classAttributeValue =  webElementIndicatingIfAccordionElementIsExpanded.getAttribute("class");
-
+		String classAttributeValue =  or.elementIndicatingIfAccordionElementIsExpanded(menuElement).getAttribute("class");
 		return classAttributeValue.contains("z-vfiletree-open");
 	}
 

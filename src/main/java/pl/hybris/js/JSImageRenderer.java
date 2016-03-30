@@ -31,7 +31,7 @@ public class JSImageRenderer
         {
             e.printStackTrace();
         }
-        final String imageFileName = path.generateImageFileName();
+        final String imageFileName = path.generateUUID();
         js.executeAsyncScript(saveElementToFile, element, imageFileName);
 
         return imageFileName;

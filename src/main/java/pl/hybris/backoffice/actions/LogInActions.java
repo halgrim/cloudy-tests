@@ -1,6 +1,5 @@
 package pl.hybris.backoffice.actions;
 
-import org.openqa.selenium.WebDriver;
 import pl.hybris.backoffice.pageobjects.LogInBlock;
 
 /**
@@ -10,23 +9,23 @@ public class LogInActions
 {
 
     private LogInBlock logInBlock;
-    private WebDriver driver;
 
-    public LogInActions(final WebDriver driver)
+    public LogInActions()
     {
-        this.driver = driver;
-        logInBlock = new LogInBlock(driver);
+        logInBlock = new LogInBlock();
 
     }
 
     public LogInActions logIn(String user, String pass)
     {
         logInBlock.synchronize()
+                .setLanguage("English")
                 .setUser(user)
                 .setPass(pass)
                 .clickLogIn();
         return this;
     }
+
 
 
 

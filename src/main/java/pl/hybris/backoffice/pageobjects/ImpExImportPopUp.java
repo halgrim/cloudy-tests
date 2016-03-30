@@ -1,7 +1,5 @@
 package pl.hybris.backoffice.pageobjects;
 
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,18 +11,22 @@ import java.util.ArrayList;
 /**
  * Created by i323728 on 21.03.2016.
  */
-@RequiredArgsConstructor
 public class ImpExImportPopUp implements BasicPageBlock
 {
 
     ArrayList<WebElement> breadcrumbsElements = new ArrayList<>();
 
-    @NonNull
     private WebDriver driver;
     private boolean initialized = false;
     By pageByTag = By.xpath("//body/div[contains(@class,'z-window')]");
 
-    private void hasToBeInitialized()
+    public ImpExImportPopUp(final WebDriver driver)
+    {
+        this.driver = driver;
+    }
+
+    @Override
+    public ImpExImportPopUp synchronize()
     {
         if (!initialized)
         {
@@ -34,14 +36,7 @@ public class ImpExImportPopUp implements BasicPageBlock
             initialized = true;
         }
 
-    }
-
-    @Override
-    public ImpExImportPopUp synchronize()
-    {
-        hasToBeInitialized();
         return this;
-
     }
 
     private WebElement getElementOnThisPage(By by)

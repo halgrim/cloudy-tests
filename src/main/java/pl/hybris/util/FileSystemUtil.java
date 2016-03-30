@@ -32,7 +32,7 @@ public class FileSystemUtil
         return readFile(SAVE_ELEMENT_TO_FILE);
     }
 
-    public String generateImageFileName(){
+    public String generateUUID(){
         final UUID idOne = UUID.randomUUID();
         return idOne.toString();
     }

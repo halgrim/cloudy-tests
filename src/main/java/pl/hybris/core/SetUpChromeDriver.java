@@ -41,7 +41,7 @@ public class SetUpChromeDriver implements CustomDriver
 		prefs.put("download.default_directory", pathU.buildImagesDestinationPath());
 
 		options.setExperimentalOption("prefs", prefs);
-		options.addArguments("--user-data-dir=chromeprofile");
+		//options.addArguments("--user-data-dir=chromeprofile");
 		caps.setCapability(ChromeOptions.CAPABILITY, options);
 
 		driver = new ChromeDriver(caps);
@@ -60,7 +60,8 @@ public class SetUpChromeDriver implements CustomDriver
 //		driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
 //		js = (JavascriptExecutor) driver;
 
-		Runtime.getRuntime().addShutdownHook(new DriverQuit(driver));
+
+
 
 	}
 

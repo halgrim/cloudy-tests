@@ -6,6 +6,5 @@ package pl.hybris.core.interfaces;
 
 public interface UITest
 {
-
-
+    void runTest();
 }

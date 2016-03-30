@@ -1,12 +1,20 @@
 package pl.hybris.util;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.internal.WrapsDriver;
-
+import pl.hybris.constants.Global;
+import pl.hybris.core.interfaces.CustomDriver;
 import pl.hybris.core.interfaces.WrapsWebElement;
 import pl.hybris.js.JSImageRenderer;
-import pl.hybris.js.JavaScriptPlayground;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
 
 
 /**
@@ -21,7 +29,7 @@ public class CommonUtil
 	}
 
 
-	public static String takeScreenshot(final WebElement element)
+	public static String takeElementScreenshot(final WebElement element)
 	{
 		final String filePath;
 
@@ -35,19 +43,18 @@ public class CommonUtil
 		{
 			if (path.checkIfDownloadImageExist(filePath))
 			{
-                return filePath;
+				return filePath;
 			}
 			try
 			{
 				Thread.sleep(250);
-			}
-			catch (final InterruptedException e)
+			} catch (final InterruptedException e)
 			{
 				break;
 			}
 		}
 
-        return "Failed to take a screenshot ";
+		return "Failed to take a screenshot ";
 
 	}
 
@@ -56,15 +63,40 @@ public class CommonUtil
 		try
 		{
 			Thread.sleep(millis);
-		}
-		catch (final InterruptedException e)
+		} catch (final InterruptedException e)
 		{
 			e.printStackTrace();
 		}
 	}
 
-	public static void highlight(WebElement pageTag)
+	public static String doAPrintScreen(WebDriver driver, String suffix)
 	{
-		JavaScriptPlayground.elementHighlight(((WrapsWebElement) pageTag).getWrappedWebElement());
+		String fileName = prepareFileName(suffix);
+		String filePath = Global.SAVED_IMAGES_FOLDER;
+		File scrFile = takeScreenshot(driver);
+		File destination = new File(filePath + fileName);
+		try
+		{
+			FileUtils.copyFile(scrFile, destination);
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		return fileName;
 	}
+
+	private static String prepareFileName(String suffix)
+	{
+		return suffix + "_" + UUID.randomUUID().toString() + ".png";
+	}
+
+	private static File takeScreenshot(WebDriver driver)
+	{
+		WebDriver tempDriver ;
+		tempDriver	= ((CustomDriver) driver).getDriver();
+		File scrFile = ((TakesScreenshot) tempDriver).getScreenshotAs(OutputType.FILE);
+		return scrFile;
+	}
+
+
 }

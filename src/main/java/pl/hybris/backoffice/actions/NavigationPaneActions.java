@@ -1,7 +1,6 @@
 package pl.hybris.backoffice.actions;
 
-import org.openqa.selenium.WebDriver;
-import pl.hybris.backoffice.or.NavigationPaneOR;
+import pl.hybris.backoffice.or.NavigationPaneORAccordionMenuElements;
 import pl.hybris.backoffice.pageobjects.NavigationPaneBlock;
 
 /**
@@ -9,23 +8,20 @@ import pl.hybris.backoffice.pageobjects.NavigationPaneBlock;
  */
 public class NavigationPaneActions
 {
-
-    private final WebDriver driver;
     private NavigationPaneBlock navigationPaneBlock;
 
-    public NavigationPaneActions(final WebDriver driver)
+    public NavigationPaneActions()
     {
-        this.driver = driver;
-        navigationPaneBlock = new NavigationPaneBlock(driver);
+        navigationPaneBlock = new NavigationPaneBlock();
     }
 
     public NavigationPaneActions navigateToToolsImport()
     {
         navigationPaneBlock
                 .synchronize()
-                .expandMenuElement(NavigationPaneOR.AccordionElementSystem)
-                .expandMenuElement(NavigationPaneOR.AccordionElementTools)
-                .clickAccordionMenuElement(NavigationPaneOR.AccordionElementImport);
+                .expandMenuElement(NavigationPaneORAccordionMenuElements.System)
+                .expandMenuElement(NavigationPaneORAccordionMenuElements.Tools)
+                .clickAccordionMenuElement(NavigationPaneORAccordionMenuElements.Import);
         return this;
     }
 }

@@ -1,29 +1,50 @@
 package pl.hybris.backoffice.or;
 
 import org.openqa.selenium.By;
-import pl.hybris.core.interfaces.Locator;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
 /**
  * Created by i323728 on 21.03.2016.
  */
-public enum NavigationPaneOR implements Locator
+public class NavigationPaneOR
 {
 
-    AccordionElementSystem(By.cssSelector("[ytestid=\"root_hmc_treenode_system_2\"]")),
-    AccordionElementTools(By.cssSelector("[ytestid=\"root_hmc_treenode_system_hmc_treenode_systemtools_1\"]")),
-    AccordionElementImport(By.cssSelector("[ytestid=\"root_hmc_treenode_system_hmc_treenode_systemtools_hmc_treenode_impex_import_wizard_1\"]"));
+    ArrayList<WebElement> breadcrumbsElements;
+    private final WebDriver driver;
 
+    By pageTag = By.cssSelector("[ytestid=\"explorerTree\"]");
 
-    private By by;
+    By elementIndicatingIfAccordionElementIsExpandedBy = By.cssSelector("td > div > span > i");
 
-    NavigationPaneOR(By by) {
-        this.by = by;
-    }
-
-    @Override
-    public By getLocator()
+    public NavigationPaneOR(final ArrayList<WebElement> breadcrumbs,final WebDriver driver)
     {
-        return by;
+        this.breadcrumbsElements = breadcrumbs;
+        this.driver = driver;
+
+        if (breadcrumbsElements.isEmpty())
+        {
+            breadcrumbsElements.add(driver.findElement(pageTag));
+        } else
+        {
+            breadcrumbsElements.add(pageTag());
+        }
     }
 
+    public WebElement pageTag()
+    {
+        return breadcrumbsElements.get(breadcrumbsElements.size() - 1).findElement(pageTag);
+    }
+
+    public WebElement elementIndicatingIfAccordionElementIsExpanded(final NavigationPaneORAccordionMenuElements menuElement)
+    {
+        return accordionMenu(menuElement).findElement(elementIndicatingIfAccordionElementIsExpandedBy);
+    }
+
+
+    public WebElement accordionMenu(final NavigationPaneORAccordionMenuElements menuElement)
+    {
+        return breadcrumbsElements.get(breadcrumbsElements.size() - 1).findElement(menuElement.getValue());
+    }
 }

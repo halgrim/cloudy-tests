@@ -102,4 +102,35 @@ public class CustomSelect
 		throw new NoSuchElementException("++++++++++ Failed to execute CustomSelect.selectByVisibleText() with text: " + text);
 	}
 
+	public CustomSelect waitUntilSelectionHappens(final String text)
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			try
+			{
+				for (final WebElement option : selectElement.getOptions())
+				{
+					if (option.isSelected())
+					{
+						if (option.getText().contains(text))
+						{
+							return this;
+						}
+					}
+				}
+				CommonUtil.wait(250);
+				CommonUtil.printMessage("++++++++++ Waiting until selector value updates");
+
+			}
+			catch (StaleElementReferenceException | IllegalStateException e)
+			{
+				CommonUtil.wait(500);
+				CommonUtil.printMessage("++++++++++ CustomSelect.selectByVisibleText() " + e.getClass().getSimpleName() +" "+ i);
+				selectElement = new Select(webElement);
+			}
+		}
+		CommonUtil.printMessage("++++++++++ Failed to execute CustomSelect.selectByVisibleText()");
+		throw new NoSuchElementException("++++++++++ Failed to execute CustomSelect.selectByVisibleText() with text: " + text);
+	}
+
 }

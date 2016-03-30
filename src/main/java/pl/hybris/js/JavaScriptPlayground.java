@@ -28,7 +28,7 @@ public class JavaScriptPlayground
 		for (int i = 0; i < 2; i++)
 		{
 			final JavascriptExecutor js = (JavascriptExecutor) ((WrapsDriver) element).getWrappedDriver();
-			String currentStyle = js.executeScript("return arguments[0].getAttribute('style');", element).toString();
+			String currentStyle = (String) js.executeScript("return arguments[0].getAttribute('style');", element);
 			js.executeScript("arguments[0].setAttribute('style', arguments[1]);", element, currentStyle + " ;color: red; border: 3px solid red;");
 			CommonUtil.wait(500);
 			js.executeScript("arguments[0].setAttribute('style', arguments[1]);", element, currentStyle);

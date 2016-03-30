@@ -20,12 +20,14 @@ repositories {
 }
 
 
-
 dependencies {
 	compile("org.projectlombok:lombok:1.16.8")
 	compile("org.seleniumhq.selenium:selenium-java:2.52.0")
-	runtime('mysql:mysql-connector-java')
-	testCompile("junit:junit")
+	compile("joda-time:joda-time:2.3")
+	compile("org.aspectj:aspectjrt:1.8.9")
+	compile("com.jamesmurty.utils:java-xmlbuilder:1.1")
+	runtime('mysql:mysql-connector-java:5.1.38')
+	testCompile("junit:junit:4.12")
 }
 
 
