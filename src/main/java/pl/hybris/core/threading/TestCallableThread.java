@@ -29,7 +29,7 @@ public class TestCallableThread implements Callable
         CurrentThreadDatabaseConnection.setConnection();
 
         String testName = testToRun.getClass().getSimpleName().toString();
-        String testID =  new InitializeTestData().initializeTestDataReport(testName);
+        Integer testID =  new InitializeTestData().initializeTestDataReport(testName);
         CurrentThreadTestData.setCurrentTestData(testID);
 
         testToRun.runTest();

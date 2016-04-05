@@ -1,13 +1,10 @@
 package pl.tests;
 
-import com.jamesmurty.utils.XMLBuilder2;
 import pl.hybris.backoffice.actions.LogInActions;
 import pl.hybris.backoffice.actions.NavigationPaneActions;
 import pl.hybris.backoffice.pageobjects.ImpExImportPopUp;
-import pl.hybris.core.threading.CurrentThreadDriver;
 import pl.hybris.core.interfaces.UITest;
-import pl.hybris.core.reporting.UniqueXMLReportGenerator;
-import pl.hybris.util.CommonUtil;
+import pl.hybris.core.threading.CurrentThreadDriver;
 
 /**
  * Created by i323728 on 25.03.2016.
@@ -29,8 +26,8 @@ public class VerifyUIforToolsImportTarget implements UITest
 
         impExImportPopUp.synchronize();
 
-        XMLBuilder2 xml = UniqueXMLReportGenerator.getCurrentReporter().getBuilder();
-        CommonUtil.printMessage(xml.asString());
+        //XMLBuilder2 xml = UniqueXMLReportGenerator.getCurrentReporter().getBuilder();
+        //CommonUtil.printMessage(xml.asString());
 
     }
 

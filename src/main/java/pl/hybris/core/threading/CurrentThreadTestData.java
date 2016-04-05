@@ -5,15 +5,15 @@ package pl.hybris.core.threading;
  */
 public class CurrentThreadTestData
 {
-    private static final ThreadLocal <String> threadLocal =
-            new ThreadLocal < String > () {};
+    private static final ThreadLocal <Integer> threadLocal =
+            new ThreadLocal < Integer > () {};
 
-    public static void setCurrentTestData(String testData)
+    public static void setCurrentTestData(int testData)
     {
         threadLocal.set(testData);
     }
 
-    public static String getCurrentTestData()
+    public static Integer getCurrentTestData()
     {
         return threadLocal.get();
     }

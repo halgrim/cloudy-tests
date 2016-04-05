@@ -20,20 +20,29 @@ public class TestApplication
 
 	public static void main(String[] args)
 	{
-		UITest test = new VerifyUIforToolsImportSource();
-        WebDriver driver = new SetUpChromeDriver();
-		CurrentThreadDriver.setCurrentDriver(driver);
-        Runtime.getRuntime().addShutdownHook(new DriverQuit(driver));
-		CurrentThreadDatabaseConnection.setConnection();
+		try
+		{
+			UITest test = new VerifyUIforToolsImportSource();
+			WebDriver driver = new SetUpChromeDriver();
+			CurrentThreadDriver.setCurrentDriver(driver);
+			Runtime.getRuntime().addShutdownHook(new DriverQuit(driver));
+			CurrentThreadDatabaseConnection.setConnection();
 
-		InitializeTestData initTest = new InitializeTestData();
-		String testName = test.getClass().getSimpleName().toString();
-		String testID = initTest.initializeTestDataReport(testName );
-		CurrentThreadTestData.setCurrentTestData(testID);
+			InitializeTestData initTest = new InitializeTestData();
+			String testName = test.getClass().getSimpleName().toString();
+			int testID = initTest.initializeTestDataReport(testName);
+			CurrentThreadTestData.setCurrentTestData(testID);
 
-		test.runTest();
-        InitializeTestData.saveReportToDB();
+			test.runTest();
 
+		} finally
+        {
+            //XMLBuilder2 xml = UniqueXMLReportGenerator.getCurrentReporter().getBuilder();
+            //CommonUtil.printMessage(xml.asString());
+
+            //SaveXMLToDB.saveReportToDB();
+
+        }
 	}
 
 

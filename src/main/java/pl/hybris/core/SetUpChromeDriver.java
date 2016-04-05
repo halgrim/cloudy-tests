@@ -61,8 +61,6 @@ public class SetUpChromeDriver implements CustomDriver
 //		js = (JavascriptExecutor) driver;
 
 
-
-
 	}
 
 	public WebDriver getDriver()
