@@ -9,14 +9,13 @@ import pl.hybris.core.threading.CurrentThreadDriver;
 /**
  * Created by i323728 on 25.03.2016.
  */
+@SuppressWarnings("ALL")
 public class VerifyUIforToolsImportSource implements UITest
 {
 
     @Override
     public void runTest()
     {
-
-
         LogInActions logInActions = new LogInActions();
         NavigationPaneActions navigationPaneActions = new NavigationPaneActions();
         ImpExImportPopUp impExImportPopUp = new ImpExImportPopUp(CurrentThreadDriver.getCurrentDriver());
@@ -27,8 +26,6 @@ public class VerifyUIforToolsImportSource implements UITest
         navigationPaneActions.navigateToToolsImport();
 
         impExImportPopUp.synchronize();
-
-
     }
 
 }

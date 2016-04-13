@@ -23,6 +23,11 @@ public class DriverQuit extends Thread {
     }
 
     public void run() {
+        if (driver == null && browsers == null)
+        {
+            System.out.println("All browsers have been already terminated. Bye.");
+        }
+
         if (driver != null)
         {
             driver.quit();

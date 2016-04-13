@@ -1,4 +1,4 @@
-package pl.hybris.core.database;
+package pl.hybris.core.models;
 
 import org.joda.time.DateTime;
 
@@ -10,7 +10,8 @@ import java.sql.Timestamp;
 public class ActionObject
 {
 
-    private Integer testID;
+    private Integer testRunID;
+    private String actionType;
     private String className;
     private String methodName;
     private String arguments;
@@ -19,9 +20,9 @@ public class ActionObject
     private String returnValue;
     private String screenshotBefore;
 
-    public Integer getTestID()
+    public Integer getTestRunID()
     {
-        return testID;
+        return testRunID;
     }
 
     public String getClassName()
@@ -59,10 +60,20 @@ public class ActionObject
         return screenshotBefore;
     }
 
-    public ActionObject setTestID(final Integer testID)
+    public String getActionType()
     {
-        this.testID = testID;
+        return actionType;
+    }
+
+    public ActionObject setTestRunID(final Integer testRunID)
+    {
+        this.testRunID = testRunID;
         return this;
+    }
+
+    public ActionObject setActionType(final String actionType)
+    {
+        this.actionType = actionType;  return this;
     }
 
     public ActionObject setClassName(final String className)
@@ -107,4 +118,7 @@ public class ActionObject
         this.screenshotBefore = screenshotBefore;
         return this;
     }
+
+
+
 }

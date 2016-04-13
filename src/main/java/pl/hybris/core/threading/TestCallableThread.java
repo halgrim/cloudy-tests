@@ -2,7 +2,7 @@ package pl.hybris.core.threading;
 
 import org.openqa.selenium.WebDriver;
 import pl.hybris.core.interfaces.UITest;
-import pl.hybris.core.reporting.InitializeTestData;
+import pl.hybris.core.rest.PostHelper;
 
 import java.util.concurrent.Callable;
 
@@ -26,15 +26,14 @@ public class TestCallableThread implements Callable
     {
 
         CurrentThreadDriver.setCurrentDriver(driver);
-        CurrentThreadDatabaseConnection.setConnection();
 
         String testName = testToRun.getClass().getSimpleName().toString();
-        Integer testID =  new InitializeTestData().initializeTestDataReport(testName);
-        CurrentThreadTestData.setCurrentTestData(testID);
+        PostHelper postResult = new PostHelper();
+        int testRunID = postResult.postInitializeTestRun(testName);
+        CurrentThreadTestData.setCurrentTestRunID(testRunID);
 
         testToRun.runTest();
 
-        CurrentThreadDatabaseConnection.closeConnection();
         return driver;
 
     }

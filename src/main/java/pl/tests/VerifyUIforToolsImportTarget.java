@@ -9,6 +9,7 @@ import pl.hybris.core.threading.CurrentThreadDriver;
 /**
  * Created by i323728 on 25.03.2016.
  */
+@SuppressWarnings("ALL")
 public class VerifyUIforToolsImportTarget implements UITest
 {
 
@@ -19,16 +20,12 @@ public class VerifyUIforToolsImportTarget implements UITest
         NavigationPaneActions navigationPaneActions = new NavigationPaneActions();
         ImpExImportPopUp impExImportPopUp = new ImpExImportPopUp(CurrentThreadDriver.getCurrentDriver());
 
-        CurrentThreadDriver.getCurrentDriver().navigate().to("http://source:9001/backoffice/");
+        CurrentThreadDriver.getCurrentDriver().navigate().to("http://target:9001/backoffice/");
         logInActions.logIn("admin", "nimda");
 
         navigationPaneActions.navigateToToolsImport();
 
         impExImportPopUp.synchronize();
-
-        //XMLBuilder2 xml = UniqueXMLReportGenerator.getCurrentReporter().getBuilder();
-        //CommonUtil.printMessage(xml.asString());
-
     }
 
 }

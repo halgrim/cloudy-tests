@@ -8,12 +8,12 @@ public class CurrentThreadTestData
     private static final ThreadLocal <Integer> threadLocal =
             new ThreadLocal < Integer > () {};
 
-    public static void setCurrentTestData(int testData)
+    public static void setCurrentTestRunID(int testData)
     {
         threadLocal.set(testData);
     }
 
-    public static Integer getCurrentTestData()
+    public static Integer getCurrentTestRunID()
     {
         return threadLocal.get();
     }
