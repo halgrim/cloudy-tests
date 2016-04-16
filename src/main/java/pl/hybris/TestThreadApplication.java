@@ -1,11 +1,11 @@
 package pl.hybris;
 
 import org.openqa.selenium.WebDriver;
-import pl.hybris.core.SetUpChromeDriver;
-import pl.hybris.core.interfaces.UITest;
-import pl.hybris.core.threading.SpecificBrowserThatRunsSetOfTestsWhichCannotRunInParallel;
-import pl.hybris.core.threading.TestCallableThread;
-import pl.hybris.util.CommonUtil;
+import pl.cloudy.core.SetUpChromeDriver;
+import pl.cloudy.core.interfaces.UITest;
+import pl.cloudy.core.threading.SpecificBrowserThatRunsSetOfTestsWhichCannotRunInParallel;
+import pl.cloudy.core.threading.TestCallableThread;
+import pl.cloudy.util.CommonUtil;
 import pl.tests.VerifyUIforToolsImportTarget;
 
 import java.util.ArrayList;

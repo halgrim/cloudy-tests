@@ -1,14 +1,14 @@
-package pl.hybris.core.aspects;
+package pl.cloudy.core.aspects;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.joda.time.DateTime;
-import pl.hybris.core.models.ActionObject;
-import pl.hybris.core.rest.PostHelper;
-import pl.hybris.core.threading.CurrentThreadDriver;
-import pl.hybris.core.threading.CurrentThreadTestData;
-import pl.hybris.util.CommonUtil;
+import pl.cloudy.core.models.ActionObject;
+import pl.cloudy.core.rest.PostHelper;
+import pl.cloudy.core.threading.CurrentThreadDriver;
+import pl.cloudy.core.threading.CurrentThreadTestData;
+import pl.cloudy.util.CommonUtil;
 
 /**
  * Created by i323728 on 11.03.2016.
@@ -17,14 +17,14 @@ import pl.hybris.util.CommonUtil;
 public class LoggingAround
 {
 
-    @Around("execution(* pl.hybris.backoffice..actions..*(..))")
+    @Around("execution(* pl.cloudy.backoffice..actions..*(..))")
     public Object aroundActions(ProceedingJoinPoint joinPoint) throws Throwable
     {
         CommonUtil.printMessage("------------------------------------------------------");
         return saveActionData(joinPoint, "action", true);
     }
 
-    @Around("execution(* pl.hybris.backoffice..pageobjects..*(..))")
+    @Around("execution(* pl.cloudy.backoffice..pageobjects..*(..))")
     public Object aroundPageObject(ProceedingJoinPoint joinPoint) throws Throwable
     {
         CommonUtil.printMessage("------------------------------------------------------");

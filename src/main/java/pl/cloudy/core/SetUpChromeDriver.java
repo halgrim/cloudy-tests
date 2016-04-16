@@ -1,4 +1,4 @@
-package pl.hybris.core;
+package pl.cloudy.core;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -10,9 +10,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import pl.hybris.core.interfaces.CustomDriver;
-import pl.hybris.util.CommonUtil;
-import pl.hybris.util.FileSystemUtil;
+import pl.cloudy.core.interfaces.CustomDriver;
+import pl.cloudy.util.CommonUtil;
+import pl.cloudy.util.FileSystemUtil;
 
 import java.util.HashMap;
 import java.util.List;

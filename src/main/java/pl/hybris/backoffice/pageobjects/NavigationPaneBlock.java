@@ -2,10 +2,10 @@ package pl.hybris.backoffice.pageobjects;
 
 
 import org.openqa.selenium.WebElement;
+import pl.cloudy.core.interfaces.BasicPageBlock;
+import pl.cloudy.core.threading.CurrentThreadDriver;
 import pl.hybris.backoffice.or.NavigationPaneOR;
 import pl.hybris.backoffice.or.NavigationPaneORAccordionMenuElements;
-import pl.hybris.core.threading.CurrentThreadDriver;
-import pl.hybris.core.interfaces.BasicPageBlock;
 
 import java.util.ArrayList;
 

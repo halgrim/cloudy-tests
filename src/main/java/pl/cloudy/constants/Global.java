@@ -1,4 +1,4 @@
-package pl.hybris.constants;
+package pl.cloudy.constants;
 
 import java.io.File;
 

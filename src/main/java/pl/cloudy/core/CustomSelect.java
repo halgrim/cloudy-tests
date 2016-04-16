@@ -1,11 +1,11 @@
-package pl.hybris.core;
+package pl.cloudy.core;
 
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import pl.hybris.util.CommonUtil;
+import pl.cloudy.util.CommonUtil;
 
 
 /**

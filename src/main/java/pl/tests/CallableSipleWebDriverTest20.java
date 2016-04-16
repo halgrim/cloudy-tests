@@ -1,8 +1,8 @@
 package pl.tests;
 
-import pl.hybris.core.threading.CurrentThreadDriver;
-import pl.hybris.core.interfaces.UITest;
-import pl.hybris.util.CommonUtil;
+import pl.cloudy.core.threading.CurrentThreadDriver;
+import pl.cloudy.core.interfaces.UITest;
+import pl.cloudy.util.CommonUtil;
 
 /**
  * Created by i323728 on 25.03.2016.

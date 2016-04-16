@@ -1,8 +1,8 @@
-package pl.hybris.core.threading;
+package pl.cloudy.core.threading;
 
 import org.openqa.selenium.WebDriver;
-import pl.hybris.core.interfaces.UITest;
-import pl.hybris.core.rest.PostHelper;
+import pl.cloudy.core.interfaces.UITest;
+import pl.cloudy.core.rest.PostHelper;
 
 import java.util.concurrent.Callable;
 
@@ -29,7 +29,7 @@ public class TestCallableThread implements Callable
 
         String testName = testToRun.getClass().getSimpleName().toString();
         PostHelper postResult = new PostHelper();
-        int testRunID = postResult.postInitializeTestRun(testName);
+        int testRunID = postResult.initializeTestRun(testName);
         CurrentThreadTestData.setCurrentTestRunID(testRunID);
 
         testToRun.runTest();

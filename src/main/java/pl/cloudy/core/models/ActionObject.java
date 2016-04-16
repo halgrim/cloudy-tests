@@ -1,4 +1,4 @@
-package pl.hybris.core.models;
+package pl.cloudy.core.models;
 
 import org.joda.time.DateTime;
 

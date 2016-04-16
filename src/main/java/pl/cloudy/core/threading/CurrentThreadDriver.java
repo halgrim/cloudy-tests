@@ -1,4 +1,4 @@
-package pl.hybris.core.threading;
+package pl.cloudy.core.threading;
 
 import org.openqa.selenium.WebDriver;
 

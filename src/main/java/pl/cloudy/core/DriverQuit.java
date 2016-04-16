@@ -1,4 +1,4 @@
-package pl.hybris.core;
+package pl.cloudy.core;
 
 import org.openqa.selenium.WebDriver;
 

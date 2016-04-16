@@ -1,11 +1,11 @@
-package pl.hybris.js;
+package pl.cloudy.js;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.internal.WrapsDriver;
 import org.openqa.selenium.internal.WrapsElement;
-import pl.hybris.core.CustomWebElement;
-import pl.hybris.util.CommonUtil;
+import pl.cloudy.core.CustomWebElement;
+import pl.cloudy.util.CommonUtil;
 
 
 /**

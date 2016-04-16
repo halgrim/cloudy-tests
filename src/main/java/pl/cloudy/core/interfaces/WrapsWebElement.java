@@ -1,4 +1,4 @@
-package pl.hybris.core.interfaces;
+package pl.cloudy.core.interfaces;
 
 import org.openqa.selenium.WebElement;
 

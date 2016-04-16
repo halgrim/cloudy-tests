@@ -1,11 +1,11 @@
-package pl.hybris.core.rest;
+package pl.cloudy.core.rest;
 
 import org.glassfish.jersey.media.multipart.FormDataMultiPart;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.media.multipart.file.FileDataBodyPart;
 import org.joda.time.DateTime;
-import pl.hybris.constants.Global;
-import pl.hybris.core.models.ActionObject;
+import pl.cloudy.constants.Global;
+import pl.cloudy.core.models.ActionObject;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -115,11 +115,16 @@ public class PostHelper
 
     }
 
-    public int postInitializeTestRun(final String testName)
+    public int initializeTestRun(final String testName)
     {
+
+        String testSuiteName = "all tests";
+
+        int testRunId = 0;
 
         try
         {
+
             URL url = new URL("http://localhost:8080/initializeTestRun");
 
             DateTime dateTime = new DateTime();
@@ -128,7 +133,7 @@ public class PostHelper
             Map<String, Object> params = new LinkedHashMap<>();
             params.put("testName", testName);
             params.put("startTimestamp", startDate);
-
+            //params.put("testSuite", testSuiteName);
 
             byte[] postDataBytes = postContentFromParams(params);
 
@@ -141,9 +146,11 @@ public class PostHelper
 
             Reader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
 
+            String response ="";
             for (int c; (c = in.read()) >= 0; )
-                System.out.print((char) c);
+                response += String.valueOf((char) c);
 
+            testRunId = Integer.valueOf(response);
 
         } catch (MalformedURLException e)
         {
@@ -159,7 +166,7 @@ public class PostHelper
             e.printStackTrace();
         }
 
-        return 666;
+        return testRunId;
     }
 
     private byte[] postContentFromParams(Map<String, Object> params) throws UnsupportedEncodingException

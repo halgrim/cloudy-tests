@@ -1,10 +1,10 @@
-package pl.hybris.core.threading;
+package pl.cloudy.core.threading;
 
 import org.openqa.selenium.WebDriver;
-import pl.hybris.core.SetUpChromeDriver;
-import pl.hybris.core.interfaces.UITest;
-import pl.hybris.core.rest.PostHelper;
-import pl.hybris.util.CommonUtil;
+import pl.cloudy.core.SetUpChromeDriver;
+import pl.cloudy.core.interfaces.UITest;
+import pl.cloudy.core.rest.PostHelper;
+import pl.cloudy.util.CommonUtil;
 
 import java.util.List;
 import java.util.Random;
@@ -38,7 +38,7 @@ public class SpecificBrowserThatRunsSetOfTestsWhichCannotRunInParallel implement
             CommonUtil.printMessage("Running test " + testName);
 
             PostHelper postResult = new PostHelper();
-            int testRunID = postResult.postInitializeTestRun(testName);
+            int testRunID = postResult.initializeTestRun(testName);
             CurrentThreadTestData.setCurrentTestRunID(testRunID);
 
             testToRun.runTest();

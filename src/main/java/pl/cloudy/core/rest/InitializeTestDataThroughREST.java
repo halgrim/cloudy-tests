@@ -1,4 +1,4 @@
-package pl.hybris.core.rest;
+package pl.cloudy.core.rest;
 
 public class InitializeTestDataThroughREST
 {

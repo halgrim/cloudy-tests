@@ -1,4 +1,4 @@
-package pl.hybris.core;
+package pl.cloudy.core;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.internal.WrapsDriver;
 import org.openqa.selenium.internal.WrapsElement;
-import pl.hybris.util.CommonUtil;
+import pl.cloudy.util.CommonUtil;
 
 import java.util.List;
 

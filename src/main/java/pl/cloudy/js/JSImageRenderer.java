@@ -1,8 +1,8 @@
-package pl.hybris.js;
+package pl.cloudy.js;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import pl.hybris.util.FileSystemUtil;
+import pl.cloudy.util.FileSystemUtil;
 
 import java.io.IOException;
 

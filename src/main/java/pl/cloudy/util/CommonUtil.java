@@ -1,4 +1,4 @@
-package pl.hybris.util;
+package pl.cloudy.util;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
@@ -7,10 +7,10 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.internal.WrapsDriver;
-import pl.hybris.constants.Global;
-import pl.hybris.core.interfaces.CustomDriver;
-import pl.hybris.core.interfaces.WrapsWebElement;
-import pl.hybris.js.JSImageRenderer;
+import pl.cloudy.constants.Global;
+import pl.cloudy.core.interfaces.CustomDriver;
+import pl.cloudy.core.interfaces.WrapsWebElement;
+import pl.cloudy.js.JSImageRenderer;
 
 import java.io.File;
 import java.io.IOException;

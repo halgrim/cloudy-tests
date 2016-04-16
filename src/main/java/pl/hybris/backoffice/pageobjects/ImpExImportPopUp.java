@@ -3,8 +3,8 @@ package pl.hybris.backoffice.pageobjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import pl.hybris.core.interfaces.BasicPageBlock;
-import pl.hybris.js.JavaScriptPlayground;
+import pl.cloudy.core.interfaces.BasicPageBlock;
+import pl.cloudy.js.JavaScriptPlayground;
 
 import java.util.ArrayList;
 

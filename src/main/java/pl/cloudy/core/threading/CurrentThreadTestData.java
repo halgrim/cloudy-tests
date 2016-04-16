@@ -1,4 +1,4 @@
-package pl.hybris.core.threading;
+package pl.cloudy.core.threading;
 
 /**
  * Created by i323728 on 29.03.2016.
